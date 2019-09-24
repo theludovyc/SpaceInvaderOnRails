@@ -17,9 +17,9 @@ texture = ExtResource( 3 )
 [node name="Area2D" type="Area2D" parent="Shield"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shield/Area2D"]
-build_mode = 1
 polygon = PoolVector2Array( -96, 24, -96, 12, -88, 2, -70, -11, -54, -18, -26, -24, 26, -24, 54, -18, 70, -11, 88, 2, 96, 12, 96, 24 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+[connection signal="area_entered" from="Shield/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

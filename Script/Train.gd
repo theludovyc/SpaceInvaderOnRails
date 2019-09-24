@@ -33,3 +33,8 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	$Shield.visible=false
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("AlienBall"):
+		area.queue_free()
+	pass # Replace with function body.
