@@ -4,10 +4,10 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-const SPEED = 2
+const SPEED = 4
 
-const MIN_X = 45
-const MAX_X = 435
+const MIN_X = 100
+const MAX_X = 380
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,5 +24,12 @@ func _process(delta):
 		position.x+=SPEED
 		if position.x>MAX_X:
 			position.x=MAX_X
+			
+	if Input.is_action_just_pressed("ui_accept") && $Timer.is_stopped():
+		$Timer.start();
+		$Shield.visible=true
 	
 #	pass
+
+func _on_Timer_timeout():
+	$Shield.visible=false
