@@ -8,10 +8,12 @@ var alienBall = preload("res://Prefab/Alien_Ball.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var ball = alienBall.instance()
-	add_child(ball)
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(delta):
+	if Input.is_action_just_pressed("ui_up"):
+		var ball = alienBall.instance()
+		add_child(ball)
 #	pass
