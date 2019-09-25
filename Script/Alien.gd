@@ -14,6 +14,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):
-		var ball = alienBall.instance()
-		add_child(ball)
+		shoot()
 #	pass
+
+func shoot():
+	if $Timer.is_stopped():
+		$AnimatedSprite.animation="Shoot"
+		$Timer.start()
+
+func _on_Timer_timeout():
+	$AnimatedSprite.animation="Default"
+	var ball = alienBall.instance()
+	add_child(ball)
+	ball.position.y+=28
+	pass # Replace with function body.
