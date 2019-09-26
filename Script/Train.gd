@@ -4,7 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-const SPEED = 4
+const SPEED = 100
 
 const MIN_X = 100
 const MAX_X = 380
@@ -18,12 +18,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("ui_left") && position.x>MIN_X:
-		position.x-=SPEED
+		position.x-=SPEED*delta
 		if position.x<MIN_X:
 			position.x=MIN_X
 	
 	if Input.is_action_pressed("ui_right") && position.x<MAX_X:
-		position.x+=SPEED
+		position.x+=SPEED*delta
 		if position.x>MAX_X:
 			position.x=MAX_X
 			

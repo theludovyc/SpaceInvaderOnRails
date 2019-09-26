@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/new_bg.png-8cc8282cc1c17b44aeca262577720b51.stex"
+path="res://.import/new_beam_full.png-44de45422ba57c5243ef4159b5c4c192.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/new_bg.png"
-dest_files=[ "res://.import/new_bg.png-8cc8282cc1c17b44aeca262577720b51.stex" ]
+source_file="res://Art/new_beam_full.png"
+dest_files=[ "res://.import/new_beam_full.png-44de45422ba57c5243ef4159b5c4c192.stex" ]
 
 [params]
 
