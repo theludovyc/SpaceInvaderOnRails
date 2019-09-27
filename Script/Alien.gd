@@ -27,3 +27,9 @@ func _on_Timer_timeout():
 	add_child(ball)
 	ball.position.y+=28
 	pass # Replace with function body.
+
+
+func _on_Area2D_area_entered(area):
+	if area.name=="BigLaser":
+		queue_free()
+	pass # Replace with function body.

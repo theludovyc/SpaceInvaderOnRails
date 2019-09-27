@@ -15,6 +15,11 @@ var charge:=0
 func _ready():
 	pass # Replace with function body.
 
+func setStatusShield(b):
+	$BigLaser.visible=b
+	$BigLaser.monitoring=b
+	$BigLaser.monitorable=b
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("ui_left") && position.x>MIN_X:
@@ -29,7 +34,7 @@ func _process(delta):
 			
 	if Input.is_action_just_pressed("ui_accept") and $Timer.is_stopped():
 		if charge>2:
-			$BigLaser.visible=true
+			setStatusShield(true)
 			$Timer.wait_time=2
 		else:
 			$Shield.setStatus(true)
@@ -37,7 +42,7 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	if $BigLaser.visible:
-		$BigLaser.visible=false
+		setStatusShield(false)
 		$Timer.wait_time=1
 		charge=0
 	else:

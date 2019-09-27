@@ -17,3 +17,9 @@ func _process(delta):
 	if position.y>700:
 		queue_free()
 #	pass
+
+
+func _on_Alien_Ball_area_entered(area):
+	if area.name == "BigLaser":
+		queue_free()
+	pass # Replace with function body.

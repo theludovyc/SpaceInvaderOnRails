@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Script/Train.gd" type="Script" id=1]
 [ext_resource path="res://Art/new_player.png" type="Texture" id=2]
 [ext_resource path="res://Art/new_shield.png" type="Texture" id=3]
 [ext_resource path="res://Script/Shield.gd" type="Script" id=4]
 [ext_resource path="res://Art/new_beam_full.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 178 )
 
 [node name="Train" type="Node2D"]
 script = ExtResource( 1 )
@@ -28,9 +31,17 @@ polygon = PoolVector2Array( -96, 24, -96, 12, -88, 2, -70, -11, -54, -18, -26, -
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="BigLaser" type="Sprite" parent="."]
+[node name="BigLaser" type="Area2D" parent="."]
 visible = false
+monitoring = false
+monitorable = false
+
+[node name="BigLaser_S" type="Sprite" parent="BigLaser"]
 position = Vector2( 0, -260 )
 texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigLaser"]
+position = Vector2( 0, -282 )
+shape = SubResource( 1 )
 [connection signal="area_entered" from="Shield/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
