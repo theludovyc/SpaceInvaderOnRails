@@ -4,10 +4,13 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-const SPEED = 100
+const SPEED = 200
 
 const MIN_X = 100
 const MAX_X = 380
+
+const COOLDOWN_SHIELD = 0.5
+const COOLDOWN_LASER = 0.6
 
 var charge:=0
 
@@ -35,7 +38,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept") and $Timer.is_stopped():
 		if charge>2:
 			setStatusShield(true)
-			$Timer.wait_time=2
+			$Timer.wait_time=COOLDOWN_LASER
 		else:
 			$Shield.setStatus(true)
 		$Timer.start()
@@ -43,7 +46,7 @@ func _process(delta):
 func _on_Timer_timeout():
 	if $BigLaser.visible:
 		setStatusShield(false)
-		$Timer.wait_time=1
+		$Timer.wait_time=COOLDOWN_SHIELD
 		charge=0
 	else:
 		$Shield.setStatus(false)

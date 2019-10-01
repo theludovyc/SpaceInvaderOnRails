@@ -23,5 +23,7 @@ func _ready():
 #	pass
 
 func _on_Timer_timeout():
-	get_child(randi()%get_child_count()).shoot()
+	var childs = get_child_count()
+	if childs>0:
+		get_child(randi()%childs).shoot()
 	pass # Replace with function body.
