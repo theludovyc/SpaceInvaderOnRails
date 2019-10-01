@@ -10,7 +10,7 @@ signal alien_dead(me)
 
 # Called when the node enters the scene tree for the first time.
 func appear():
-	$AnimationPlayer.current_animation="Appear"
+	$AnimationPlayer.play("Appear")
 
 func _ready():
 	appear()
@@ -37,5 +37,6 @@ func _on_Timer_timeout():
 
 func _on_Area2D_area_entered(area):
 	if area.name=="BigLaser":
+		modulate.a=0
 		emit_signal("alien_dead", self)
 	pass # Replace with function body.
