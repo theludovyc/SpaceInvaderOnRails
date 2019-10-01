@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Script/Alien.gd" type="Script" id=1]
 [ext_resource path="res://Art/new_alien.png" type="Texture" id=2]
@@ -21,6 +21,21 @@ animations = [ {
 radius = 21.8449
 height = 23.0905
 
+[sub_resource type="Animation" id=3]
+resource_name = "Appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 0.466516 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 1 )
 
@@ -34,5 +49,8 @@ animation = "Default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 3 )
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

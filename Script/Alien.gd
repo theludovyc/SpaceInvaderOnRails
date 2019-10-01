@@ -6,8 +6,14 @@ var alienBall = preload("res://Prefab/Alien_Ball.tscn")
 # var a = 2
 # var b = "text"
 
+signal alien_dead(me)
+
 # Called when the node enters the scene tree for the first time.
+func appear():
+	$AnimationPlayer.current_animation="Appear"
+
 func _ready():
+	appear()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,5 +37,5 @@ func _on_Timer_timeout():
 
 func _on_Area2D_area_entered(area):
 	if area.name=="BigLaser":
-		queue_free()
+		emit_signal("alien_dead", self)
 	pass # Replace with function body.
