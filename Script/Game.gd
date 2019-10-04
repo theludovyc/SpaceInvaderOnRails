@@ -9,8 +9,6 @@ const AlienConst = 80
 const AlienX=5
 const AlienY=3
 
-var bla:=0
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for j in range(AlienY):
