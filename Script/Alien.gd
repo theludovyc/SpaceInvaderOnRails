@@ -9,6 +9,8 @@ var alienBall = preload("res://Prefab/Alien_Ball.tscn")
 signal alien_dead(me)
 signal alien_ready(me)
 
+var dead:=true
+
 # Called when the node enters the scene tree for the first time.
 func appear():
 	$AnimationPlayer.play("Appear")
@@ -36,7 +38,8 @@ func _on_Timer_timeout():
 
 
 func _on_Area2D_area_entered(area):
-	if area.name=="BigLaser":
+	if area.name=="BigLaser" and !dead:
 		$AnimatedSprite.self_modulate.a=0
+		dead=true
 		emit_signal("alien_dead", self)
 	pass # Replace with function body.
