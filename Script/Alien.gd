@@ -7,19 +7,19 @@ var alienBall = preload("res://Prefab/Alien_Ball.tscn")
 # var b = "text"
 
 signal alien_dead(me)
+signal alien_ready(me)
 
 # Called when the node enters the scene tree for the first time.
 func appear():
 	$AnimationPlayer.play("Appear")
+	yield($AnimationPlayer, "animation_finished")
+	emit_signal("alien_ready", self)
 
-func _ready():
-	appear()
-	pass # Replace with function body.
+#func _ready():
+#	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("ui_up"):
-		shoot()
+#func _process(delta):
 #	pass
 
 func shoot():
@@ -37,6 +37,6 @@ func _on_Timer_timeout():
 
 func _on_Area2D_area_entered(area):
 	if area.name=="BigLaser":
-		modulate.a=0
+		$AnimatedSprite.self_modulate.a=0
 		emit_signal("alien_dead", self)
 	pass # Replace with function body.
