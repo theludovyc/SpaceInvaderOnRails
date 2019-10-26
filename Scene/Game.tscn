@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Script/Game.gd" type="Script" id=1]
 [ext_resource path="res://Art/new_bg.png" type="Texture" id=2]
 [ext_resource path="res://Prefab/Train.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art/8bitOperatorPlus-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Script/Score.gd" type="Script" id=5]
+[ext_resource path="res://Sound/Juhani Junkala [Retro Game Music Pack] Level 1.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sound/sfx_weapon_singleshot3.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sound/sfx_exp_short_hard3.wav" type="AudioStream" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -13,6 +22,8 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 centered = false
 
+[node name="Aliens_ball" type="Node" parent="."]
+
 [node name="Aliens_appear" type="Node" parent="."]
 
 [node name="Aliens" type="Node" parent="."]
@@ -20,11 +31,32 @@ centered = false
 [node name="Train" parent="." instance=ExtResource( 3 )]
 position = Vector2( 240, 458 )
 
+[node name="Score" type="Label" parent="."]
+margin_top = 523.0
+margin_right = 480.0
+margin_bottom = 554.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+script = ExtResource( 5 )
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="AudioMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="AudioShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="AudioDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="catch_ball" from="Train" to="." method="_on_Train_catch_ball"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

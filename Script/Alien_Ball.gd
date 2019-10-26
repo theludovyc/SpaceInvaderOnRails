@@ -4,6 +4,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+signal outside
+
 const SPEED=200
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +17,7 @@ func _process(delta):
 	position.y+=SPEED*delta
 	
 	if position.y>700:
+		emit_signal("outside")
 		queue_free()
 #	pass
 

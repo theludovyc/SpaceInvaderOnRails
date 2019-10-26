@@ -1,13 +1,12 @@
 extends Node2D
 
-var alienBall = preload("res://Prefab/Alien_Ball.tscn")
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 signal alien_dead(me)
 signal alien_ready(me)
+signal alien_shoot(me)
 
 var dead:=true
 
@@ -31,9 +30,7 @@ func shoot():
 
 func _on_Timer_timeout():
 	$AnimatedSprite.animation="Default"
-	var ball = alienBall.instance()
-	add_child(ball)
-	ball.position.y+=28
+	emit_signal("alien_shoot", self)
 	pass # Replace with function body.
 
 

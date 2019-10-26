@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_sound_shutdown1.wav-37e95d730797868164caa64a0b6885bc.sample"
+
+[deps]
+
+source_file="res://Sound/sfx_sound_shutdown1.wav"
+dest_files=[ "res://.import/sfx_sound_shutdown1.wav-37e95d730797868164caa64a0b6885bc.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
