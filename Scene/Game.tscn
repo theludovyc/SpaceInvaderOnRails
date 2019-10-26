@@ -22,9 +22,9 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Aliens_ball" type="Node" parent="."]
-
 [node name="Aliens_appear" type="Node" parent="."]
+
+[node name="Aliens_ball" type="Node" parent="."]
 
 [node name="Aliens" type="Node" parent="."]
 
